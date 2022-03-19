@@ -54,6 +54,3 @@ Enemy_3 = game.createSprite(randint(0, 4), randint(0, 2))
 Target_4 = game.createSprite(randint(0, 4), randint(0, 2))
 Enemy_5 = game.createSprite(randint(0, 4), randint(0, 2))
 Super_Target_6 = game.createSprite(randint(0, 4), randint(0, 2))
-basic.forever(function () {
-	
-})
