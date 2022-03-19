@@ -39,12 +39,6 @@ input.onButtonPressed(Button.AB, function () {
 input.onButtonPressed(Button.B, function () {
     Player.change(LedSpriteProperty.X, 1)
 })
-let Enemy_bullet_2: game.LedSprite = null
-let Enemy_bullet_3: game.LedSprite = null
-let Enemy_bullet: game.LedSprite = null
-let Enemy_value_3 = 0
-let Enemy_value = 0
-let Enemy_value_5 = 0
 let Bullet: game.LedSprite = null
 let Super_Target_6: game.LedSprite = null
 let Enemy_5: game.LedSprite = null
@@ -61,30 +55,5 @@ Target_4 = game.createSprite(randint(0, 4), randint(0, 2))
 Enemy_5 = game.createSprite(randint(0, 4), randint(0, 2))
 Super_Target_6 = game.createSprite(randint(0, 4), randint(0, 2))
 basic.forever(function () {
-    Enemy_value_5 = randint(0, 1)
-    Enemy_value = randint(0, 1)
-    Enemy_value_3 = randint(0, 1)
-    if (Enemy_value == 1) {
-        Enemy_bullet = game.createSprite(Enemy.get(LedSpriteProperty.X), Enemy.get(LedSpriteProperty.Y) + 1)
-        for (let index = 0; index < 4; index++) {
-            if (Enemy_bullet.isTouching(Bullet)) {
-                Enemy_bullet.delete()
-                Bullet.delete()
-            } else if (Enemy_bullet.isTouching(Player)) {
-                game.gameOver()
-            } else {
-                basic.pause(100)
-                Enemy_bullet.change(LedSpriteProperty.Y, 1)
-                basic.pause(100)
-            }
-        }
-        Enemy_bullet.delete()
-    } else if (Enemy_value_3 == 1) {
-        Enemy_bullet_3 = game.createSprite(Enemy_3.get(LedSpriteProperty.X), 2)
-    } else if (Enemy_value_5 == 1) {
-        Enemy_bullet_2 = game.createSprite(Enemy_5.get(LedSpriteProperty.X), 2)
-    } else {
-        game.pause()
-        game.resume()
-    }
+	
 })
