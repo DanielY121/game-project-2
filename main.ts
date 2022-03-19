@@ -4,9 +4,6 @@ input.onButtonPressed(Button.A, function () {
 input.onButtonPressed(Button.AB, function () {
     Bullet = game.createSprite(Player.get(LedSpriteProperty.X), 3)
     for (let index = 0; index < 4; index++) {
-        basic.pause(100)
-        Bullet.change(LedSpriteProperty.Y, -1)
-        basic.pause(500)
         if (Bullet.isTouching(Enemy)) {
             Enemy.delete()
             Bullet.delete()
@@ -31,6 +28,10 @@ input.onButtonPressed(Button.AB, function () {
             Super_Target_6.delete()
             Bullet.delete()
             game.addScore(10)
+        } else {
+            basic.pause(100)
+            Bullet.change(LedSpriteProperty.Y, -1)
+            basic.pause(500)
         }
     }
     Bullet.delete()
@@ -77,6 +78,7 @@ basic.forever(function () {
                 basic.pause(100)
             }
         }
+        Enemy_bullet.delete()
     } else if (Enemy_value_3 == 1) {
         Enemy_bullet_3 = game.createSprite(Enemy_3.get(LedSpriteProperty.X), 2)
     } else if (Enemy_value_5 == 1) {
