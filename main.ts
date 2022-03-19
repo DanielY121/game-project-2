@@ -4,54 +4,85 @@ input.onButtonPressed(Button.A, function () {
 input.onButtonPressed(Button.AB, function () {
     Bullet = game.createSprite(Player.get(LedSpriteProperty.X), 3)
     for (let index = 0; index < 4; index++) {
+        basic.pause(100)
+        Bullet.change(LedSpriteProperty.Y, -1)
+        basic.pause(500)
         if (Bullet.isTouching(Enemy)) {
             Enemy.delete()
             Bullet.delete()
             game.addScore(1)
-        } else if (Enemy_2.isTouching(null)) {
-        	
-        } else if (Enemy_3.isTouching(null)) {
-        	
-        } else if (Enemy_4.isTouching(null)) {
-        	
-        } else if (Enemy_5.isTouching(null)) {
-        	
-        } else if (Enemy_6.isTouching(null)) {
-        	
-        } else {
-        	
+        } else if (Target_2.isTouching(Bullet)) {
+            Target_2.delete()
+            Bullet.delete()
+            game.addScore(1)
+        } else if (Enemy_3.isTouching(Bullet)) {
+            Enemy_3.delete()
+            Bullet.delete()
+            game.addScore(1)
+        } else if (Target_4.isTouching(Bullet)) {
+            Target_4.delete()
+            Bullet.delete()
+            game.addScore(1)
+        } else if (Enemy_5.isTouching(Bullet)) {
+            Enemy_5.delete()
+            Bullet.delete()
+            game.addScore(1)
+        } else if (Super_Target_6.isTouching(Bullet)) {
+            Super_Target_6.delete()
+            Bullet.delete()
+            game.addScore(10)
         }
     }
+    Bullet.delete()
 })
 input.onButtonPressed(Button.B, function () {
     Player.change(LedSpriteProperty.X, 1)
 })
+let Enemy_bullet_2: game.LedSprite = null
+let Enemy_bullet_3: game.LedSprite = null
+let Enemy_bullet: game.LedSprite = null
+let Enemy_value_3 = 0
+let Enemy_value = 0
+let Enemy_value_5 = 0
 let Bullet: game.LedSprite = null
-let Enemy_6: game.LedSprite = null
+let Super_Target_6: game.LedSprite = null
 let Enemy_5: game.LedSprite = null
-let Enemy_4: game.LedSprite = null
+let Target_4: game.LedSprite = null
 let Enemy_3: game.LedSprite = null
-let Enemy_2: game.LedSprite = null
+let Target_2: game.LedSprite = null
 let Enemy: game.LedSprite = null
 let Player: game.LedSprite = null
 Player = game.createSprite(2, 4)
-let Random_enemy_value = randint(1, 4)
-if (Random_enemy_value == 1) {
-    Enemy = game.createSprite(randint(0, 4), randint(0, 2))
-} else if (Random_enemy_value == 2) {
-    Enemy = game.createSprite(randint(0, 4), randint(0, 2))
-} else if (Random_enemy_value == 3) {
-    Enemy = game.createSprite(randint(0, 4), randint(0, 2))
-} else {
-    basic.showString("Enemy fever ")
-    basic.pause(3000)
-    Enemy = game.createSprite(2, 2)
-    Enemy_2 = game.createSprite(2, 2)
-    Enemy_3 = game.createSprite(2, 2)
-    Enemy_4 = game.createSprite(2, 2)
-    Enemy_5 = game.createSprite(2, 2)
-    Enemy_6 = game.createSprite(2, 2)
-}
+Enemy = game.createSprite(randint(0, 4), randint(0, 2))
+Target_2 = game.createSprite(randint(0, 4), randint(0, 2))
+Enemy_3 = game.createSprite(randint(0, 4), randint(0, 2))
+Target_4 = game.createSprite(randint(0, 4), randint(0, 2))
+Enemy_5 = game.createSprite(randint(0, 4), randint(0, 2))
+Super_Target_6 = game.createSprite(randint(0, 4), randint(0, 2))
 basic.forever(function () {
-	
+    Enemy_value_5 = randint(0, 1)
+    Enemy_value = randint(0, 1)
+    Enemy_value_3 = randint(0, 1)
+    if (Enemy_value == 1) {
+        Enemy_bullet = game.createSprite(Enemy.get(LedSpriteProperty.X), Enemy.get(LedSpriteProperty.Y) + 1)
+        for (let index = 0; index < 4; index++) {
+            if (Enemy_bullet.isTouching(Bullet)) {
+                Enemy_bullet.delete()
+                Bullet.delete()
+            } else if (Enemy_bullet.isTouching(Player)) {
+                game.gameOver()
+            } else {
+                basic.pause(100)
+                Enemy_bullet.change(LedSpriteProperty.Y, 1)
+                basic.pause(100)
+            }
+        }
+    } else if (Enemy_value_3 == 1) {
+        Enemy_bullet_3 = game.createSprite(Enemy_3.get(LedSpriteProperty.X), 2)
+    } else if (Enemy_value_5 == 1) {
+        Enemy_bullet_2 = game.createSprite(Enemy_5.get(LedSpriteProperty.X), 2)
+    } else {
+        game.pause()
+        game.resume()
+    }
 })
