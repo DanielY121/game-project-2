@@ -28,6 +28,44 @@ input.onButtonPressed(Button.AB, function () {
             Super_Target_6.delete()
             Bullet.delete()
             game.addScore(10)
+        } else if (TNT.isTouching(Bullet)) {
+            basic.showLeds(`
+                . . . . .
+                . . # . .
+                . # . # .
+                . . # . .
+                . . . . .
+                `)
+            basic.showLeds(`
+                . . . . .
+                . . # . .
+                . # # # .
+                . . # . .
+                . . . . .
+                `)
+            basic.showLeds(`
+                . . # . .
+                . # . # .
+                # . . . #
+                . # . # .
+                . . # . .
+                `)
+            basic.showLeds(`
+                . . # . .
+                . # # # .
+                # # . # #
+                . # # # .
+                . . # . .
+                `)
+            basic.showLeds(`
+                . . # . .
+                . # # # .
+                # # # # #
+                . # # # .
+                . . # . .
+                `)
+            basic.showString("You shoot a TNT ")
+            game.gameOver()
         } else {
             basic.pause(100)
             Bullet.change(LedSpriteProperty.Y, -1)
@@ -40,6 +78,7 @@ input.onButtonPressed(Button.B, function () {
     Player.change(LedSpriteProperty.X, 1)
 })
 let Bullet: game.LedSprite = null
+let TNT: game.LedSprite = null
 let Super_Target_6: game.LedSprite = null
 let Enemy_5: game.LedSprite = null
 let Target_4: game.LedSprite = null
@@ -54,3 +93,4 @@ Enemy_3 = game.createSprite(randint(0, 4), randint(0, 2))
 Target_4 = game.createSprite(randint(0, 4), randint(0, 2))
 Enemy_5 = game.createSprite(randint(0, 4), randint(0, 2))
 Super_Target_6 = game.createSprite(randint(0, 4), randint(0, 2))
+TNT = game.createSprite(randint(0, 4), randint(0, 2))
