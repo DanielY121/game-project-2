@@ -1,3 +1,8 @@
+radio.onReceivedNumber(function (receivedNumber) {
+    game.pause()
+    basic.showNumber(receivedNumber)
+    game.resume()
+})
 input.onGesture(Gesture.TiltLeft, function () {
     Player.change(LedSpriteProperty.X, -1)
     music.playMelody("C5 - - - - - - - ", 500)
@@ -94,6 +99,10 @@ input.onButtonPressed(Button.AB, function () {
                 . . # . .
                 `)
             basic.showString("You shoot a TNT ")
+            if (input.buttonIsPressed(Button.A)) {
+                radio.sendString("Game over Score:")
+                radio.sendNumber(game.score())
+            }
             game.gameOver()
         } else {
             basic.pause(100)
@@ -102,6 +111,12 @@ input.onButtonPressed(Button.AB, function () {
         }
     }
     Bullet.delete()
+})
+radio.onReceivedString(function (receivedString) {
+    game.pause()
+    music.playMelody("G A G A G A C5 C ", 500)
+    basic.showString(receivedString)
+    game.resume()
 })
 input.onGesture(Gesture.TiltRight, function () {
     Player.change(LedSpriteProperty.X, 1)
@@ -137,3 +152,4 @@ Target_10 = game.createSprite(randint(0, 4), randint(0, 2))
 Target_11 = game.createSprite(randint(0, 4), randint(0, 2))
 Super_Target_12 = game.createSprite(randint(0, 4), randint(0, 2))
 TNT = game.createSprite(randint(0, 4), randint(0, 2))
+radio.setGroup(2)
