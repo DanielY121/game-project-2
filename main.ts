@@ -57,6 +57,7 @@ input.onButtonPressed(Button.AB, function () {
             for (let index = 0; index < 2; index++) {
                 music.playMelody("C5 C5 C5 C5 C C C C ", 500)
             }
+            game.pause()
             basic.showLeds(`
                 . . . . .
                 . . # . .

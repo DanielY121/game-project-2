@@ -74,9 +74,9 @@ def on_button_pressed_ab():
             """)
             basic.show_leds("""
                 . . # . .
-                                . # . # .
-                                # . . . #
-                                . # . # .
+                                . # # # .
+                                # # # # #
+                                . # # # .
                                 . . # . .
             """)
             basic.show_leds("""
@@ -88,9 +88,9 @@ def on_button_pressed_ab():
             """)
             basic.show_leds("""
                 . . # . .
-                                . # # # .
-                                # # # # #
-                                . # # # .
+                                . # . # .
+                                # . . . #
+                                . # . # .
                                 . . # . .
             """)
             basic.show_string("You shoot a TNT ")
