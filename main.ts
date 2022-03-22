@@ -73,9 +73,9 @@ input.onButtonPressed(Button.AB, function () {
                 `)
             basic.showLeds(`
                 . . # . .
-                . # . # .
-                # . . . #
-                . # . # .
+                . # # # .
+                # # # # #
+                . # # # .
                 . . # . .
                 `)
             basic.showLeds(`
@@ -87,9 +87,9 @@ input.onButtonPressed(Button.AB, function () {
                 `)
             basic.showLeds(`
                 . . # . .
-                . # # # .
-                # # # # #
-                . # # # .
+                . # . # .
+                # . . . #
+                . # . # .
                 . . # . .
                 `)
             basic.showString("You shoot a TNT ")
