@@ -122,11 +122,6 @@ input.onGesture(Gesture.TiltRight, function () {
     Player.change(LedSpriteProperty.X, 1)
     music.playMelody("C5 - - - - - - - ", 500)
 })
-let Bonus_Target_5: game.LedSprite = null
-let Bonus_Target_4: game.LedSprite = null
-let Bonus_Target_3: game.LedSprite = null
-let Bonus_Target_2: game.LedSprite = null
-let Bonus_Target_1: game.LedSprite = null
 let Bullet: game.LedSprite = null
 let TNT: game.LedSprite = null
 let Super_Target_12: game.LedSprite = null
@@ -157,8 +152,6 @@ Target_10 = game.createSprite(randint(0, 4), randint(0, 2))
 Target_11 = game.createSprite(randint(0, 4), randint(0, 2))
 Super_Target_12 = game.createSprite(randint(0, 4), randint(0, 2))
 TNT = game.createSprite(randint(0, 4), randint(0, 2))
-let Bonus_Target_TNT_1 = game.createSprite(randint(0, 4), randint(0, 2))
-let Bonus_Target_TNT_2 = game.createSprite(randint(0, 4), randint(0, 2))
 radio.setGroup(2)
 basic.forever(function () {
     if (TNT.isTouching(Target)) {
@@ -186,50 +179,6 @@ basic.forever(function () {
         Target_11.delete()
     } else if (TNT.isTouching(Super_Target_12)) {
         Super_Target_12.delete()
-        game.addScore(1)
-    } else if (TNT.isTouching(Bonus_Target_TNT_1)) {
-        Bonus_Target_TNT_1.delete()
-    } else if (TNT.isTouching(Bonus_Target_1)) {
-        Bonus_Target_1.delete()
-    } else if (TNT.isTouching(Bonus_Target_TNT_2)) {
-        Bonus_Target_TNT_2.delete()
-        game.addScore(1)
-    } else if (TNT.isTouching(Bonus_Target_2)) {
-        Bonus_Target_2.delete()
-    } else if (TNT.isTouching(Bonus_Target_3)) {
-        Bonus_Target_3.delete()
-    } else if (TNT.isTouching(Bonus_Target_4)) {
-        Bonus_Target_4.delete()
-    } else if (TNT.isTouching(Bonus_Target_5)) {
-        Bonus_Target_5.delete()
-    } else if (Bonus_Target_TNT_1.isTouching(Bullet)) {
-        Bonus_Target_TNT_1.delete()
-        Bonus_Target_1 = game.createSprite(randint(0, 4), randint(0, 2))
-        Bonus_Target_2 = game.createSprite(randint(0, 4), randint(0, 2))
-        Bonus_Target_3 = game.createSprite(randint(0, 4), randint(0, 2))
-    } else if (Bonus_Target_TNT_2.isTouching(Bullet)) {
-        Bonus_Target_TNT_2.delete()
-        Bonus_Target_4 = game.createSprite(randint(0, 4), randint(0, 2))
-        Bonus_Target_5 = game.createSprite(randint(0, 4), randint(0, 2))
-    } else if (Bonus_Target_1.isTouching(Bullet)) {
-        Bonus_Target_1.delete()
-        Bullet.delete()
-        game.addScore(1)
-    } else if (Bonus_Target_2.isTouching(Bullet)) {
-        Bonus_Target_2.delete()
-        Bullet.delete()
-        game.addScore(1)
-    } else if (Bonus_Target_3.isTouching(Bullet)) {
-        Bonus_Target_3.delete()
-        Bullet.delete()
-        game.addScore(1)
-    } else if (Bonus_Target_4.isTouching(Bullet)) {
-        Bonus_Target_4.delete()
-        Bullet.delete()
-        game.addScore(1)
-    } else if (Bonus_Target_5.isTouching(Bullet)) {
-        Bonus_Target_5.delete()
-        Bullet.delete()
         game.addScore(1)
     } else {
         game.pause()
