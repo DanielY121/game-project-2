@@ -57,7 +57,8 @@ def on_button_pressed_ab():
             game.add_score(10)
         elif TNT.is_touching(Bullet):
             for index2 in range(2):
-                music.play_melody("C5 C5 C5 C5 C C C C ", 500)
+                music.play_melody("B C5 E C5 D C E D ", 500)
+            game.pause()
             basic.show_leds("""
                 . . . . .
                                 . . # . .
@@ -93,13 +94,13 @@ def on_button_pressed_ab():
                                 . # . # .
                                 . . # . .
             """)
-            basic.show_string("You shoot a TNT ")
+            basic.show_string("TNT exploded")
             game.game_over()
         else:
             basic.pause(100)
             Bullet.change(LedSpriteProperty.Y, -1)
             basic.pause(500)
-    Bullet.delete()
+        Bullet.delete()
 input.on_button_pressed(Button.AB, on_button_pressed_ab)
 
 def on_gesture_tilt_right():
@@ -137,3 +138,36 @@ Target_10 = game.create_sprite(randint(0, 4), randint(0, 2))
 Target_11 = game.create_sprite(randint(0, 4), randint(0, 2))
 Super_Target_12 = game.create_sprite(randint(0, 4), randint(0, 2))
 TNT = game.create_sprite(randint(0, 4), randint(0, 2))
+radio.set_group(2)
+
+def on_forever():
+    if TNT.is_touching(Target):
+        Target.delete()
+    elif TNT.is_touching(Target_2):
+        Target_2.delete()
+    elif TNT.is_touching(Target_3):
+        Target_3.delete()
+    elif TNT.is_touching(Target_4):
+        Target_4.delete()
+    elif TNT.is_touching(Target_5):
+        Target_5.delete()
+    elif TNT.is_touching(Super_Target_6):
+        Super_Target_6.delete()
+        game.add_score(1)
+    elif TNT.is_touching(Target_7):
+        Target_7.delete()
+    elif TNT.is_touching(Target_8):
+        Target_8.delete()
+    elif TNT.is_touching(Target_9):
+        Target_9.delete()
+    elif TNT.is_touching(Target_10):
+        Target_10.delete()
+    elif TNT.is_touching(Target_11):
+        Target_11.delete()
+    elif TNT.is_touching(Super_Target_12):
+        Super_Target_12.delete()
+        game.add_score(1)
+    else:
+        game.pause()
+        game.resume()
+basic.forever(on_forever)
