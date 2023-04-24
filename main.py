@@ -1,12 +1,12 @@
-def on_gesture_tilt_left():
+def on_button_pressed_a():
     Player.change(LedSpriteProperty.X, -1)
     music.play_melody("C5 - - - - - - - ", 500)
-input.on_gesture(Gesture.TILT_LEFT, on_gesture_tilt_left)
+input.on_button_pressed(Button.A, on_button_pressed_a)
 
 def on_button_pressed_ab():
     global Bullet
     Bullet = game.create_sprite(Player.get(LedSpriteProperty.X), 3)
-    for index in range(4):
+    for index in range(5):
         if Bullet.is_touching(Target):
             Target.delete()
             Bullet.delete()
@@ -58,55 +58,19 @@ def on_button_pressed_ab():
         elif TNT.is_touching(Bullet):
             for index2 in range(2):
                 music.play_melody("B C5 E C5 D C E D ", 500)
-            game.pause()
-            basic.show_leds("""
-                . . . . .
-                                . . # . .
-                                . # . # .
-                                . . # . .
-                                . . . . .
-            """)
-            basic.show_leds("""
-                . . . . .
-                                . . # . .
-                                . # # # .
-                                . . # . .
-                                . . . . .
-            """)
-            basic.show_leds("""
-                . . # . .
-                                . # # # .
-                                # # # # #
-                                . # # # .
-                                . . # . .
-            """)
-            basic.show_leds("""
-                . . # . .
-                                . # # # .
-                                # # . # #
-                                . # # # .
-                                . . # . .
-            """)
-            basic.show_leds("""
-                . . # . .
-                                . # . # .
-                                # . . . #
-                                . # . # .
-                                . . # . .
-            """)
             basic.show_string("TNT exploded")
             game.game_over()
         else:
-            basic.pause(100)
+            basic.pause(200)
             Bullet.change(LedSpriteProperty.Y, -1)
             basic.pause(500)
-        Bullet.delete()
+    Bullet.delete()
 input.on_button_pressed(Button.AB, on_button_pressed_ab)
 
-def on_gesture_tilt_right():
+def on_button_pressed_b():
     Player.change(LedSpriteProperty.X, 1)
     music.play_melody("C5 - - - - - - - ", 500)
-input.on_gesture(Gesture.TILT_RIGHT, on_gesture_tilt_right)
+input.on_button_pressed(Button.B, on_button_pressed_b)
 
 Bullet: game.LedSprite = None
 TNT: game.LedSprite = None
@@ -138,7 +102,6 @@ Target_10 = game.create_sprite(randint(0, 4), randint(0, 2))
 Target_11 = game.create_sprite(randint(0, 4), randint(0, 2))
 Super_Target_12 = game.create_sprite(randint(0, 4), randint(0, 2))
 TNT = game.create_sprite(randint(0, 4), randint(0, 2))
-radio.set_group(2)
 
 def on_forever():
     if TNT.is_touching(Target):

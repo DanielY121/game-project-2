@@ -1,10 +1,10 @@
-input.onGesture(Gesture.TiltLeft, function () {
+input.onButtonPressed(Button.A, function () {
     Player.change(LedSpriteProperty.X, -1)
     music.playMelody("C5 - - - - - - - ", 500)
 })
 input.onButtonPressed(Button.AB, function () {
     Bullet = game.createSprite(Player.get(LedSpriteProperty.X), 3)
-    for (let index = 0; index < 4; index++) {
+    for (let index = 0; index < 5; index++) {
         if (Bullet.isTouching(Target)) {
             Target.delete()
             Bullet.delete()
@@ -57,53 +57,17 @@ input.onButtonPressed(Button.AB, function () {
             for (let index = 0; index < 2; index++) {
                 music.playMelody("B C5 E C5 D C E D ", 500)
             }
-            game.pause()
-            basic.showLeds(`
-                . . . . .
-                . . # . .
-                . # . # .
-                . . # . .
-                . . . . .
-                `)
-            basic.showLeds(`
-                . . . . .
-                . . # . .
-                . # # # .
-                . . # . .
-                . . . . .
-                `)
-            basic.showLeds(`
-                . . # . .
-                . # # # .
-                # # # # #
-                . # # # .
-                . . # . .
-                `)
-            basic.showLeds(`
-                . . # . .
-                . # # # .
-                # # . # #
-                . # # # .
-                . . # . .
-                `)
-            basic.showLeds(`
-                . . # . .
-                . # . # .
-                # . . . #
-                . # . # .
-                . . # . .
-                `)
             basic.showString("TNT exploded")
             game.gameOver()
         } else {
-            basic.pause(100)
+            basic.pause(200)
             Bullet.change(LedSpriteProperty.Y, -1)
             basic.pause(500)
         }
-        Bullet.delete()
     }
+    Bullet.delete()
 })
-input.onGesture(Gesture.TiltRight, function () {
+input.onButtonPressed(Button.B, function () {
     Player.change(LedSpriteProperty.X, 1)
     music.playMelody("C5 - - - - - - - ", 500)
 })
@@ -137,7 +101,6 @@ Target_10 = game.createSprite(randint(0, 4), randint(0, 2))
 Target_11 = game.createSprite(randint(0, 4), randint(0, 2))
 Super_Target_12 = game.createSprite(randint(0, 4), randint(0, 2))
 TNT = game.createSprite(randint(0, 4), randint(0, 2))
-radio.setGroup(2)
 basic.forever(function () {
     if (TNT.isTouching(Target)) {
         Target.delete()
